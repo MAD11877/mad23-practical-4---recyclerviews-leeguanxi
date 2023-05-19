@@ -11,6 +11,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -18,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
+
+
     User user = new User();
     boolean followed = user.followed;
     public void onFollowClick(View v) {
@@ -47,8 +52,16 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         // receive data from ListActivity
         Intent intent = getIntent();
+        String name = intent.getStringExtra("USERNAME");
+        String description = intent.getStringExtra("DESCRIPTION");
+        TextView nameTV = findViewById(R.id.textView);
+        TextView descTV = findViewById(R.id.textView2);
+        nameTV.setText(name);
+        descTV.setText(description);
+
+        /*
         int randomInt = intent.getIntExtra("random_integer", 0);
         TextView textview = findViewById(R.id.textView);
-        textview.setText("MAD " + randomInt);
+        textview.setText("MAD " + randomInt); */
     }
 }
